@@ -1,0 +1,12 @@
+.funcButton {
+    min-width: 15em;
+    border-radius: 20px;
+    padding: 1em;
+    font-size: 1.3vw;
+    border: none;
+
+}
+
+.funcButton:hover {
+    border: 2px solid #c5937790;
+}
