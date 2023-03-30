@@ -1,8 +1,6 @@
 import './App.css';
 import Card from './components/Card';
 import Table from './components/Table';
-import Button from './components/Button';
-import ButtonAllWords from './components/ButtonAllWords';
 import Head from './components/Head';
 import { BrowserRouter, Routes, Route, Link
  } from 'react-router-dom';
@@ -69,10 +67,7 @@ function App() {
         <Route path="/" element={<Head/>}/>
       </Routes>
       </div>
-      {/*<div><Header/></div>
-      <Cat/>
-      <div><Card word={element.name} description={element.description} /></div>
-    
+      {/*
       <div className='dataButton'>
        {/*{dataButton.map(
           (element) => {

@@ -4,6 +4,7 @@ import Cat from "./Cat";
 import Header from "./Header";
 import Button from "./Button";
 import ButtonAllWords from "./ButtonAllWords";
+import CardBody from "./CardBody";
 
 const unresolvetWords = [
   {
@@ -22,30 +23,20 @@ const unresolvetWords = [
     translate: "Птица"
   }
 ]
-function Card({ word, description }) {
+
+const element = unresolvetWords[0]
+
+function Card() {
     return (
         
               <div>
               <div> <Header/></div>
-                 <div>
-                  <Cat/>
-                </div>
-                <div  className="bodyCard">
-                <div className="wordsLocation">
-                  <div className="round">
-                    <input type="checkbox" id="cat" className="checkbox"/>
-                    <label for="cat" className="check_agree">выключить котика</label>
-                  </div>
-                  <div className="cardword">{unresolvetWords.name}</div>
-                  <div className="carddescription">{description}</div>
-                  <button className="cardButton">Проверить перевод</button>
-
-                </div>
-                </div>
-                <div className="buttonsCard">
-               <Button/>
+                <Cat/>
+                <CardBody/>
+              <div className="buttonsCard">
+               <Button name="Не знаю"/>
                <ButtonAllWords/>
-               <Button/></div>
+               <Button name="Знаю"/></div>
               </div>
             );
           
