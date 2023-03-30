@@ -79,3 +79,11 @@
   .checkbox:checked {
     background-color: rgb(222, 18, 18);
   }
+
+  .buttonsCard {
+    display: flex;
+    flex-direction: row;
+    margin-top: -5%;
+    justify-content: center;
+gap: 5%;
+  }
