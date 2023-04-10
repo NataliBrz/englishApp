@@ -10,3 +10,43 @@
 .funcButton:hover {
     border: 2px solid #c5937790;
 }
+
+.leftButton {
+    background-image: url("../assets/pictures/buttonLeft.png");
+    padding-left : 70px;
+    padding-right : 70px;
+    padding-top : 10px;
+    padding-bottom : 60px;
+    background-repeat : no-repeat;
+}
+
+.buttonLeftStyle {
+    width: 60px;
+    height: 55px;
+    background-color: white;
+    border: none;
+}
+
+.buttonLeftStyle:hover {
+border: 2px solid blue;
+}
+
+.rightButton {
+    background-image: url("../assets/pictures/buttonRight.png");
+    padding-left : 50px;
+    padding-right : 70px;
+    padding-top : 10px;
+    padding-bottom : 60px;
+    background-repeat : no-repeat;
+}
+
+.buttonRightStyle {
+    width: 60px;
+    height: 55px;
+    background-color: white;
+    border: none;
+}
+
+.buttonRightStyle:hover {
+border: 2px solid blue;
+}

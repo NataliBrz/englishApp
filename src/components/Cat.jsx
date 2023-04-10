@@ -3,7 +3,7 @@ import '../components/catStyle.css'
 
 function Cat() {
     return (
-      <div>
+      <div className="catan">
         
 
 <div className="all-wrap">

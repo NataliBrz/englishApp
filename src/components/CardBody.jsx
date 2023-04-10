@@ -1,5 +1,7 @@
 import React from "react";
-import '../components/cardStyle.css'
+import '../components/cardStyle.css';
+import Cat from "./Cat";
+import CheckBox from "./CheckBox";
 
 
 const unresolvetWords = [
@@ -20,22 +22,39 @@ const unresolvetWords = [
   }
 ]
 
-const element = unresolvetWords[0]
 
-function CardBody() {
+const CardBody = (props) => {
+const [isCat, setIsCat] = React.useState(true);
+
+const toggleIsCat = () => {
+  setIsCat(!isCat)
+}
+
+const {name} = this.props;
+
+onClick = (name, e) => {
+  this.setState({name : name});
+
+}
+
     return (
         
               <div>
              
                 <div  className="bodyCard">
                 <div className="wordsLocation">
-                  <div className="round">
-                    <input type="checkbox" id="cat" className="checkbox"/>
-                    <label for="cat" className="check_agree">выключить котика</label>
-                  </div>
-                  <div className="cardword">{element.name}</div>
-                  <div className="carddescription">{element.description}</div>
-                  <button className="cardButton">Проверить перевод</button>
+                  
+                  <div className="cardword">{unresolvetWords[0].name}</div>
+                  <div className="carddescription">{unresolvetWords[0].description}</div>
+                  <button className="cardButton" onClick={(e)=>this.onClick(name, e)}>Проверить перевод</button>
+                  {
+                    this.state.name &&
+                    <p>изучено {this.state.name}</p>
+                  }
+                  <CheckBox toggleIsCat={toggleIsCat}/>
+                  {
+                    isCat && <Cat/>
+                  }
 
                 </div>
                 </div>

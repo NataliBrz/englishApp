@@ -1,42 +1,28 @@
 import React from "react";
 import '../components/cardStyle.css'
-import Cat from "./Cat";
 import Header from "./Header";
 import Button from "./Button";
 import ButtonAllWords from "./ButtonAllWords";
 import CardBody from "./CardBody";
+import ButtonLeft from "./ButtonLeft";
+import ButtonRight from "./ButtonRight";
+ 
 
-const unresolvetWords = [
-  {
-    name: "cat",
-    description: "small animal",
-    translate: "Кот"
-  },
-  {
-    name: "dog",
-    description: "big animal",
-    translate: "Собака"
-  },
-  {
-    name: "bird",
-    description: "not animal",
-    translate: "Птица"
-  }
-]
-
-const element = unresolvetWords[0]
 
 function Card() {
     return (
         
               <div>
               <div> <Header/></div>
-                <Cat/>
-                <CardBody/>
+                <div className="buttonsBody">
+                <ButtonLeft/>
+                <div><CardBody/></div>
+                <ButtonRight/>
+                </div>
               <div className="buttonsCard">
-               <Button name="Не знаю"/>
+               <Button name="Не знаю" style={{backgroundColor: 'rgb(120, 157, 120)'}}/>
                <ButtonAllWords/>
-               <Button name="Знаю"/></div>
+               <Button name="Знаю" style={{backgroundColor: 'rgb(120, 157, 120)'}}/></div>
               </div>
             );
           

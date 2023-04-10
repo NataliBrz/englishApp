@@ -1,10 +1,13 @@
+.catan {
+  margin-left: -180%;
+}
 
 .all-wrap {
     animation: bob 7s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
   }
   
   .all {
-    top: 10rem;
+    top: -15rem;
     left: calc(30% - 2.5rem);
     position: absolute;
     width: 5rem;
