@@ -2,6 +2,10 @@ import React from "react";
 import '../components/cardStyle.css';
 import Cat from "./Cat";
 import CheckBox from "./CheckBox";
+import { useRef, useEffect } from "react";
+
+
+
 
 
 const unresolvetWords = [
@@ -30,12 +34,25 @@ const toggleIsCat = () => {
   setIsCat(!isCat)
 }
 
-const {name} = this.props;
+const {name} = props;
 
-onClick = (name, e) => {
-  this.setState({name : name});
+const [state, setState] = React.useState({
+  value: 'не изучено слов',
+  setValue: {name},
+});
+
+const onClick = (name, e) => {
+  setState({name:name});
 
 }
+
+const buttonLearn = useRef(null);
+
+  useEffect(() => {
+    if (buttonLearn.current) {
+      buttonLearn.current.focus();
+    }
+  }, []);
 
     return (
         
@@ -46,10 +63,12 @@ onClick = (name, e) => {
                   
                   <div className="cardword">{unresolvetWords[0].name}</div>
                   <div className="carddescription">{unresolvetWords[0].description}</div>
-                  <button className="cardButton" onClick={(e)=>this.onClick(name, e)}>Проверить перевод</button>
+                  <button className="cardButton" onClick={(e)=>onClick(name, e)} ref={buttonLearn}>Проверить перевод</button>
+                  
+                  
                   {
-                    this.state.name &&
-                    <p>изучено {this.state.name}</p>
+                    state.name &&
+                    <p>изучено {state.name}</p>
                   }
                   <CheckBox toggleIsCat={toggleIsCat}/>
                   {
