@@ -1,0 +1,24 @@
+.tableWords {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+  }
+    
+  table {
+    border: 2px solid forestgreen;
+    width: 800px;
+  }
+    
+  th {
+    border-bottom: 1px solid black;
+  }
+    
+  td {
+    text-align: center;
+    border-bottom: 1px solid black;
+    height:min-content;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }

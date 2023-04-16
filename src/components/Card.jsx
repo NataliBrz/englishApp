@@ -20,7 +20,7 @@ function Card() {
                 <ButtonRight/>
                 </div>
               <div className="buttonsCard">
-               <Button name="Не знаю" style={{backgroundColor: 'rgb(120, 157, 120)'}}/>
+               <Button name="Не знаю" style={{color: 'rgb(120, 157, 120)'}}/>
                <ButtonAllWords/>
                <Button name="Знаю" style={{backgroundColor: 'rgb(120, 157, 120)'}}/></div>
               </div>
