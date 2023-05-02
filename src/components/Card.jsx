@@ -1,5 +1,5 @@
 import React from "react";
-import '../components/cardStyle.css'
+import '../style/cardStyle.css'
 import Header from "./Header";
 import Button from "./Button";
 import ButtonAllWords from "./ButtonAllWords";
@@ -9,8 +9,9 @@ import ButtonRight from "./ButtonRight";
  
 
 
-function Card() {
-    return (
+function Card(props) {
+
+  return (
         
               <div>
               <div> <Header/></div>
@@ -20,9 +21,9 @@ function Card() {
                 <ButtonRight/>
                 </div>
               <div className="buttonsCard">
-               <Button name="Не знаю" style={{color: 'rgb(120, 157, 120)'}}/>
+               <Button name="Не знаю" buttonClassName={'left'}/>
                <ButtonAllWords/>
-               <Button name="Знаю" style={{backgroundColor: 'rgb(120, 157, 120)'}}/></div>
+               <Button name="Знаю" buttonClassName={'right'}/></div>
               </div>
             );
           

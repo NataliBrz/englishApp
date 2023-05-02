@@ -1,18 +1,18 @@
 import React from "react";
-import '../components/buttonStyle.css';
+import '../style/buttonStyle.css'
 import {useState} from 'react';
 
 
 
 
-function Button({name}) {
+function Button({name, buttonClassName}) {
     const [count, setCount] = useState(0);
    
     
     return (
       
       <div>
-        <button onClick={() => setCount(count + 1)} className="funcButton">{name} {count}</button>
+        <button onClick={() => setCount(count + 1)} className={"funcButton "+ buttonClassName}>{name} {count}</button>
       </div>
     );
   }

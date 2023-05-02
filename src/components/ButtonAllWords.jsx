@@ -1,6 +1,5 @@
 import React from "react";
-import '../components/buttonStyle.css';
-
+import '../style/buttonStyle.css'
 
 
 function ButtonAllWords() {

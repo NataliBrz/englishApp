@@ -12,7 +12,7 @@
 }
 
 .leftButton {
-    background-image: url("../assets/pictures/buttonLeft.png");
+    background-image: url("/public/img/buttonLeft.png");
     padding-left : 70px;
     padding-right : 70px;
     padding-top : 10px;
@@ -32,7 +32,7 @@ border: 2px solid blue;
 }
 
 .rightButton {
-    background-image: url("../assets/pictures/buttonRight.png");
+    background-image: url("/public/img/buttonRight.png");
     padding-left : 50px;
     padding-right : 70px;
     padding-top : 10px;

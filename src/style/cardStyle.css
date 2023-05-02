@@ -4,7 +4,7 @@
     margin-right: 30%;*/
     height: 600px;
     width: 400px;
-    background-image: url(/src/assets/pictures/backgroundCard.jpg);
+    background-image: url(/public/img/backgroundCard.jpg);
     background-repeat:no-repeat;
     background-position: center center;
     background-size:contain;
@@ -56,6 +56,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .funcButton.left {
+ background-color: red;
   }
 
  

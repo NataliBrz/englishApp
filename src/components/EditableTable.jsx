@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Table } from "react-bootstrap";
 import { PencilFill, Save, Trash, XSquare } from 'react-bootstrap-icons';
-import './EditableTable.styles.css';
 
 
 const EditableTable = ({ columns, rows, actions }) => {
@@ -26,10 +25,14 @@ const EditableTable = ({ columns, rows, actions }) => {
 
   const handleOnChangeField = (e, rowID) => {
     const { name: fieldName, value } = e.target;
-    setEditedRow({
-      id: rowID,
-      [fieldName]: value
-    })
+    let row=editedRow;
+    if (row === undefined
+      ) {
+        row = {}
+      }
+    row['id'] = rowID
+    row[fieldName] = value;
+    setEditedRow(row)
   }
 
 
@@ -44,9 +47,9 @@ const EditableTable = ({ columns, rows, actions }) => {
       setIsEditMode(false);
       const newData = rowsState.map(row => {
         if (row.id === editedRow.id) {
-          if (editedRow.firstName) row.firstName = editedRow.firstName;
-          if (editedRow.lastName) row.lastName = editedRow.lastName;
-          if (editedRow.role) row.role = editedRow.role;
+          if (editedRow.Name) row.Name = editedRow.Name;
+          if (editedRow.Description) row.Description = editedRow.Description;
+          if (editedRow.Translate) row.Translate = editedRow.Translate;
         }
         return row;
       })
@@ -75,34 +78,36 @@ const EditableTable = ({ columns, rows, actions }) => {
             { isEditMode && rowIDToEdit === row.id
               ? <Form.Control
                 type='text'
-                defaultValue={editedRow ? editedRow.firstName : row.firstName}
+                defaultValue={editedRow ? editedRow.Name : row.Name}
                 id={row.id}
-                name='firstName'
+                name='Name'
                 onChange={ (e) => handleOnChangeField(e, row.id) }
               />
-              : row.firstName
+              : row.Name
             }
           </td>
           <td>
             { isEditMode && rowIDToEdit === row.id
               ? <Form.Control
                 type='text'
-                defaultValue={editedRow ? editedRow.lastName : row.lastName}
+                defaultValue={editedRow ? editedRow.Description : row.Description}
                 id={row.id}
-                name='lastName'
+                name='Description'
                 onChange={ (e) => handleOnChangeField(e, row.id) }
               />
-              : row.lastName
+              : row.Description
             }
           </td>
           <td>
             { isEditMode && rowIDToEdit === row.id
-              ? <Form.Select onChange={e => handleOnChangeField(e, row.id)} name="role" defaultValue={row.role}>
-                <option value='Admin'>Admin</option>
-                <option value='Editor'>Editor</option>
-                <option value='Subscriber'>Subscriber</option>
-              </Form.Select>
-              : row.role
+              ? <Form.Control
+              type='text'
+              defaultValue={editedRow ? editedRow.Translate : row.Translate}
+              id={row.id}
+              name='Translate'
+              onChange={ (e) => handleOnChangeField(e, row.id) }
+            />
+            : row.Translate
             }
           </td>
           {actions &&

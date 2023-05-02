@@ -1,5 +1,5 @@
 import React from "react";
-import '../components/cardStyle.css';
+import '../style/cardStyle.css'
 import Cat from "./Cat";
 import CheckBox from "./CheckBox";
 import { useRef, useEffect } from "react";

@@ -1,5 +1,5 @@
 import React from "react";
-import '../components/catStyle.css'
+import '../style/catStyle.css'
 
 function Cat() {
     return (

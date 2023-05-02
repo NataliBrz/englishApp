@@ -1,51 +1,25 @@
 import React from "react";
-import '../components/tableStyle.css';
+import '../style/tableStyle.css';
 import Header from "./Header";
 import EditableTable from "./EditableTable";
 
-
-
-const words = [
-  {
-    name: "cat",
-    description: "small animal",
-    translate: "Кот"
-  },
-  {
-    name: "dog",
-    description: "big animal",
-    translate: "Собака"
-  },
-  {
-    name: "bird",
-    description: "not animal",
-    translate: "Птица"
-  },
-  {
-    name: "wall",
-    description: "build house",
-    translate: "Стена"
-  },
-  {
-    name: "sun",
-    description: "important planet",
-    translate: "Солнце"
-  },
-  {
-    name: "water",
-    description: "for drink",
-    translate: "Вода"
-  }
-]
 const columns = [
   { field: 'id', fieldName: '#' },
-  { field: 'firstName', fieldName: 'First Name' },
-  { field: 'lastName', fieldName: 'Last Name' },
-  { field: 'role', fieldName: 'User\'s role' },
+  { field: 'Name', fieldName: 'Name' },
+  { field: 'Description', fieldName: 'Description' },
+  { field: 'Translate', fieldName: 'Translate' },
 ];
 const data = [
-  { id: 1, firstName: 'John', lastName: 'Doe', role: 'Admin' },
-  { id: 2, firstName: 'John', lastName: 'Smith', role: 'Editor' }
+  { id: 1, Name: 'Cat', Description: 'Small animal', Translate: 'Кот' },
+  { id: 2, Name: 'Dog', Description: 'Big animal', Translate: 'Собака' },
+  { id: 3, Name: 'Bird', Description: 'Fly in sky', Translate: 'Птица' },
+  { id: 4, Name: 'Sun', Description: 'Important planet', Translate: 'Солнце' },
+  { id: 5, Name: 'Water', Description: 'For drink', Translate: 'Вода' },
+  { id: 6, Name: 'words6', Description: 'Description6', Translate: 'Translate6' },
+  { id: 7, Name: 'words7', Description: 'Description7', Translate: 'Translate7' },
+  { id: 8, Name: 'words8', Description: 'Description8', Translate: 'Translate8' },
+  { id: 9, Name: 'words9', Description: 'Description9', Translate: 'Translate9' },
+  { id: 10, Name: 'words10', Description: 'Description10', Translate: 'Translate10' }
 ];
 
 function Table() {
@@ -53,24 +27,10 @@ function Table() {
       <div>
         <div><Header/></div>
         <div className="tableWords">
-        <table>
-        <tr>
-          <th>Name</th>
-          <th>description</th>
-          <th>translate</th>
-        </tr>
-        {words.map((val, key) => {
-          return (
-            <tr key={key}>
-              <td>{val.name}</td>
-              <td>{val.description}</td>
-              <td>{val.translate}</td>
-            </tr>
-          )
-        })}
-      </table>
-        </div>
+        
+        
         <EditableTable columns={columns} rows={data} actions />
+        </div>
       </div>
     );
   }
