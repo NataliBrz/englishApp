@@ -17,7 +17,7 @@ function App() {
           <Link to="/">Главная</Link>         
           <Link to="/learncard">Изучать карточки слов</Link>         
           <Link to="/words">Таблица слов</Link>
-          <Link to="/test">Test</Link>
+          <Link to="/test">Tests</Link>
       </nav>
       </header>
       <div>
