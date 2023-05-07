@@ -2,6 +2,7 @@ import React from "react";
 import '../style/tableStyle.css';
 import Header from "./Header";
 import EditableTable from "./EditableTable";
+import Store from '../testing/StoreTest';
 
 const columns = [
   { field: 'id', fieldName: '#' },
@@ -31,6 +32,7 @@ function Table() {
         
         <EditableTable columns={columns} rows={data} actions />
         </div>
+        <Store/>
       </div>
     );
   }
