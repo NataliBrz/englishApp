@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Table } from "react-bootstrap";
 import { PencilFill, Save, Trash, XSquare } from 'react-bootstrap-icons';
 
+/**rowID   row.id
+ * 
+ * Задаем фукнцию с 4 параметрами, в ней 3 стейта. Первый передает активное или нет состояние редактирования. По умолчанию оно не активно.
+ *  Второй позволяет редактировать строку по каждому айдишнику, включая имя, описание и перевод, первоначальное состояние - не найдено.
+ * Третий это изменение состояния и сохранение его при выключенном режиме редактирования.
+ * Затем пишем функцию, по которой включается режим редактирования. 
+ */
 
-const EditableTable = ({ columns, rows, actions }) => {
+const EditableTable = ({ columns, rows, setRowsState, actions }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [rowIDToEdit, setRowIDToEdit] = useState(undefined);
-  const [rowsState, setRowsState] = useState(rows);
   const [editedRow, setEditedRow] = useState();
   const handleEdit = (rowID) => {
     setIsEditMode(true);
@@ -14,16 +20,23 @@ const EditableTable = ({ columns, rows, actions }) => {
     setRowIDToEdit(rowID);
   }
 
-
+  /**
+   * функция удаляет строку по айдишнику при нажатии на кнопку
+   */
   const handleRemoveRow = (rowID) => {
-    const newData = rowsState.filter(row => {
+    console.log('handleRemoveRow')
+    const newData = rows.filter(row => {
       return row.id !== rowID ? row : null
     });
     setRowsState(newData);
   }
 
 
+/**
+   * меняет значение в каждом квадратике строки, е таргет - исходное значение. При изменении передаем новое значение как сет стейт и записывание ее во временную переменную
+   */
   const handleOnChangeField = (e, rowID) => {
+    console.log('handleOnChangeField')
     const { name: fieldName, value } = e.target;
     let row=editedRow;
     if (row === undefined
@@ -35,17 +48,25 @@ const EditableTable = ({ columns, rows, actions }) => {
     setEditedRow(row)
   }
 
-
+  
+/**
+   * функция отмены редактирования, возвращение как было
+   */
   const handleCancelEditing = () => {
-    setIsEditMode(false);
+    console.log('handleCancelEditing')
+        setIsEditMode(false);
     setEditedRow(undefined);
   }
 
-
+  
+/**
+   * При совершении редактирования и выключении режима происходит передача данных из массива с учетом тех изменений, которые были внесены
+   */
   const handleSaveRowChanges = () => {
+    console.log('handleSaveRowChanges')
     setTimeout(() => {
       setIsEditMode(false);
-      const newData = rowsState.map(row => {
+      const newData = rows.map(row => {
         if (row.id === editedRow.id) {
           if (editedRow.Name) row.Name = editedRow.Name;
           if (editedRow.Description) row.Description = editedRow.Description;
@@ -56,6 +77,20 @@ const EditableTable = ({ columns, rows, actions }) => {
       setRowsState(newData);
       setEditedRow(undefined)
     }, 1000)
+  }
+
+   const [row, setRow] = useState(() => {
+    const row = localStorage.getItem("row");
+    const initialValue = JSON.parse(row);
+    return initialValue || "";
+  });
+  
+  useEffect(() => {
+    localStorage.setItem('row', JSON.stringify(row))
+  }, [row])
+
+  const changeState = () => {
+    setRow(!setRowIDToEdit)
   }
 
   
@@ -69,7 +104,7 @@ const EditableTable = ({ columns, rows, actions }) => {
       </tr>
       </thead>
       <tbody>
-      {rowsState.map((row) => {
+      {rows.map((row) => {
         return <tr key={row.id}>
           <td>
             {row.id}
@@ -113,7 +148,7 @@ const EditableTable = ({ columns, rows, actions }) => {
           {actions &&
           <td>
             { isEditMode && rowIDToEdit === row.id
-              ? <button onClick={ () => handleSaveRowChanges() } className='custom-table__action-btn' disabled={!editedRow}>
+              ? <button  onClick={ () => handleSaveRowChanges() } className='custom-table__action-btn' disabled={!editedRow}>
                 <Save />
               </button>
               : <button  onClick={ () => handleEdit(row.id) } className='custom-table__action-btn'>
@@ -133,6 +168,7 @@ const EditableTable = ({ columns, rows, actions }) => {
         </tr>
       })}
       </tbody>
+      <button onChange={() => changeState()}>123</button>
     </Table>
   );
 };
