@@ -14,7 +14,7 @@ import { useState } from "react";
 function Card(props) {
 
   const [currentIndex, setCurrentIndex] = useState();
-  //const [words, setWords] = useState(unresolvetWords);
+  const [words, setWords] = useState();
 
 
   return (
@@ -36,3 +36,5 @@ function Card(props) {
   }
   
   export default Card;
+
+  

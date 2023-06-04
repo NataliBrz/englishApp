@@ -14,6 +14,9 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [rowIDToEdit, setRowIDToEdit] = useState(undefined);
   const [editedRow, setEditedRow] = useState();
+  
+  const [dannyje, izmDannyje] = useState(rows);
+  
   const handleEdit = (rowID) => {
     setIsEditMode(true);
     setEditedRow(undefined);
@@ -28,7 +31,7 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
     const newData = rows.filter(row => {
       return row.id !== rowID ? row : null
     });
-    setRowsState(newData);
+    izmDannyje(newData);
   }
 
 
@@ -66,7 +69,7 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
     console.log('handleSaveRowChanges')
     setTimeout(() => {
       setIsEditMode(false);
-      const newData = rows.map(row => {
+      const newData = dannyje.map(row => {
         if (row.id === editedRow.id) {
           if (editedRow.Name) row.Name = editedRow.Name;
           if (editedRow.Description) row.Description = editedRow.Description;
@@ -74,24 +77,14 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
         }
         return row;
       })
-      setRowsState(newData);
+      izmDannyje(newData);
       setEditedRow(undefined)
     }, 1000)
   }
 
-   const [row, setRow] = useState(() => {
-    const row = localStorage.getItem("row");
-    const initialValue = JSON.parse(row);
-    return initialValue || "";
-  });
-  
   useEffect(() => {
-    localStorage.setItem('row', JSON.stringify(row))
-  }, [row])
-
-  const changeState = () => {
-    setRow(!setRowIDToEdit)
-  }
+    setRowsState(dannyje);
+  }, [dannyje])
 
   
   return (
@@ -104,7 +97,7 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
       </tr>
       </thead>
       <tbody>
-      {rows.map((row) => {
+      {dannyje.map((row) => {
         return <tr key={row.id}>
           <td>
             {row.id}
@@ -168,7 +161,6 @@ const EditableTable = ({ columns, rows, setRowsState, actions }) => {
         </tr>
       })}
       </tbody>
-      <button onChange={() => changeState()}>123</button>
     </Table>
   );
 };

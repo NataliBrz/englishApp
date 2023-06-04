@@ -3,7 +3,7 @@ import '../style/tableStyle.css';
 import Header from "./Header";
 import EditableTable from "./EditableTable";
 import Store from '../testing/StoreTest';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const columns = [
   { field: 'id', fieldName: '#' },
@@ -27,8 +27,16 @@ const data = [
 
 
 function Table() {
-  const [words, setWords] = useState(data);
+  const [words, setWords] = useState(() => {
+    const row = localStorage.getItem("row");
+    const initialValue = JSON.parse(row);
+    return initialValue || data;
+  });
 
+
+  useEffect(() => {
+    localStorage.setItem('row', JSON.stringify(words))
+  }, [words])
   
 
     return (
