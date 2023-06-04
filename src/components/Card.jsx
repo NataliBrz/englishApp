@@ -6,10 +6,16 @@ import ButtonAllWords from "./ButtonAllWords";
 import CardBody from "./CardBody";
 import ButtonLeft from "./ButtonLeft";
 import ButtonRight from "./ButtonRight";
- 
+import { useState } from "react";
+
+
 
 
 function Card(props) {
+
+  const [currentIndex, setCurrentIndex] = useState();
+  const [words, setWords] = useState();
+
 
   return (
         
@@ -21,7 +27,7 @@ function Card(props) {
                 <ButtonRight/>
                 </div>
               <div className="buttonsCard">
-               <Button name="Не знаю" buttonClassName={'left'}/>
+               <Button name="Не знаю" buttonClassName={'left'} onClick = { () => setCurrentIndex() }/>
                <ButtonAllWords/>
                <Button name="Знаю" buttonClassName={'right'}/></div>
               </div>
@@ -30,3 +36,5 @@ function Card(props) {
   }
   
   export default Card;
+
+  

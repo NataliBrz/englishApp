@@ -3,6 +3,7 @@ import '../style/tableStyle.css';
 import Header from "./Header";
 import EditableTable from "./EditableTable";
 import Store from '../testing/StoreTest';
+import { useState, useEffect } from "react";
 
 const columns = [
   { field: 'id', fieldName: '#' },
@@ -23,14 +24,28 @@ const data = [
   { id: 10, Name: 'words10', Description: 'Description10', Translate: 'Translate10' }
 ];
 
+
+
 function Table() {
+  const [words, setWords] = useState(() => {
+    const row = localStorage.getItem("row");
+    const initialValue = JSON.parse(row);
+    return initialValue || data;
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem('row', JSON.stringify(words))
+  }, [words])
+  
+
     return (
       <div>
         <div><Header/></div>
         <div className="tableWords">
         
         
-        <EditableTable columns={columns} rows={data} actions />
+        <EditableTable columns={columns} rows={words} actions setRowsState={setWords}/>
         </div>
         <Store/>
       </div>
